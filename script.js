@@ -2,14 +2,19 @@
 
 const pixelGrid = document.querySelector(".pixelGrid");
 
-const pixels = document.querySelectorAll(".pixel");
+const changePixelColor = function() {
+    // pass arg in here for color types?  
+    const pixels = document.querySelectorAll(".pixel");
 
-pixels.forEach((pixel) => {
-    pixel.addEventListener("mouseover", () => {
-        pixel.style.background = "blue";
-        // make function to change color above
+    pixels.forEach((pixel) => {
+        pixel.addEventListener("mouseover", () => {
+            pixel.style.background = "blue";
+            // make function to change color above
+        });
     });
-});
+}
+
+changePixelColor();
 
 const gridButton = document.querySelector(".gridButton");
 
@@ -47,8 +52,9 @@ const changeGrid = function(size) {
         // pixel.style.borderWidth = `${borderWidth}px`;
         pixelGrid.appendChild(pixel);
     }
+
+    changePixelColor();
+    // pixels = document.querySelectorAll(".pixel");
+    // console.log(pixels);
+    
 }
-
-
-
-// this gets the size of 
