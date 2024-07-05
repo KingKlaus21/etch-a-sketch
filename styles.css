@@ -1,0 +1,90 @@
+* {
+    /* box-sizing: border-box; */
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+    margin: 10px auto;
+}
+
+/* .contentContainer { */
+    /* width: 650px; */
+    /* display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    border-color: red;
+    border-style: solid; */
+
+    /* align-self: center; */
+    
+/* } */
+
+.contentContainer {
+    width: 706px;
+    /* 706 since pixelGrid has a
+       border of 3px (3+3=6) */
+    border-style:solid;
+    border-color: green;
+    border-width: 3px;
+    margin: 0px;
+    margin: auto;
+
+}
+
+.buttonContainer {
+    display: flex;
+    flex: 1;
+    justify-content:space-evenly;
+    align-items: center;
+    margin: 10px 0px;
+}
+
+.pixelGrid {
+    border-style:solid;
+    border-color:black;
+    border-width: 3px;
+    width: 700px;
+    height: 700px;
+
+    /* Didnt use border-box since
+       I wanted a distinct size.
+       Make sure to adjust content
+       container by same amount if
+       adjusting width and height
+       here. Same for border width
+       changes.  */
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0px 0px;
+}
+
+.pixel {
+    box-sizing: border-box;
+    width: 70px; 
+    height: 70px;
+    /* modify width and height in js */
+    margin: 0px;
+    padding: 0px;
+
+    border-style:solid;
+    border-color:rgb(44, 44, 44);
+    border-width: 3px;
+        /* NOTE BECAUSE YOU THOUGHT OF THIS: 
+       SETTING THIS TO A PERCENT WILL KEEP THE BORDER
+       THE SAME RATIO OF WIDTH, MEANING THAT ADDING MORE
+       OR LESS PIXELS WILL KEEP THE BORDER LOOKING NICE WHILE
+       ALSO KEEPING THE GRID SIZE NORMAL WITHOUT CAUSING OVERFLOW
+       OR UNDERFLOW.  USE THE 4.25% RULE TO ACHIEVE THIS*/
+
+    /* modify width in js using below */
+
+    /* Use var() to change
+       the border width as the
+       size changes.  You could
+       make it always be 4.25%
+       of the width.  */
+    background-color: white;
+
+}
