@@ -20,7 +20,7 @@ const gridButton = document.querySelector(".gridButton");
 
 gridButton.addEventListener("click", () => {
     let gridSize = prompt("Please choose a grid size between 1 and 100:");
-    Math.round(gridSize);
+    gridSize = Math.round(gridSize);
 
     if (gridSize >= 1 && gridSize <= 100) {
         // console.log(gridSize);
@@ -53,8 +53,6 @@ const changeGrid = function(size) {
         pixelGrid.appendChild(pixel);
     }
 
-    changePixelColor();
-    // pixels = document.querySelectorAll(".pixel");
-    // console.log(pixels);
-    
+    changePixelColor();    
+
 }
