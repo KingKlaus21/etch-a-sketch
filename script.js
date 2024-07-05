@@ -21,7 +21,7 @@ gridButton.addEventListener("click", () => {
         // console.log(gridSize);
         pixelGrid.innerHTML = '';
         // clears grid
-        changeGrid(gridSize ** 2);
+        changeGrid(gridSize);
     }
     else {
         alert("Please try again");
@@ -29,17 +29,22 @@ gridButton.addEventListener("click", () => {
 });
 
 const changeGrid = function(size) {
-    let width = (size) => 700 / size;
+    console.log(size);
+    let width = 700 / size;
     let height = width;
-    let borderWidth = width * 0.042857148571;
-    // might need to add "px" to some of these
+    // let borderWidth = width * 0.042857148571;
+    
+    console.log(width);
+    console.log(height);
+    // console.log(borderWidth);
 
-    for (let i=0; i < size; i++){
+    for (let i=0; i < size ** 2; i++){
+        console.log(size);
         const pixel = document.createElement("div");
-        pixel.classList.add(".pixel");
-        pixel.style.width = width;
-        pixel.style.height = height;
-        pixel.style.borderWidth = borderWidth;
+        pixel.classList.add("pixel");
+        pixel.style.width = `${width}px`;
+        pixel.style.height = `${height}px`;
+        // pixel.style.borderWidth = `${borderWidth}px`;
         pixelGrid.appendChild(pixel);
     }
 }
