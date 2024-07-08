@@ -1,27 +1,46 @@
 'use strict'
 
-let colorType = "0, 0, 0"; //make this default already?
-let opacity = "1"; //keep same for now.  if color works, write similar logic and change to opacityType
+let colorArg = "blue";
+
+// let colorType = "0, 0, 0"; //make this default already?
+// let opacity = "1"; //keep same for now.  if color works, write similar logic and change to opacityType
 
 
 const pixelGrid = document.querySelector(".pixelGrid");
 
-const changePixelColor = function() {
+
     // pass arg in here for color types?  
-    const pixels = document.querySelectorAll(".pixel");
+const pixels = document.querySelectorAll(".pixel");
 
-    pixels.forEach((pixel) => {
-        pixel.addEventListener("mouseover", () => {
-            // color = getColorType()
-            const color = colorType; //hopefully this wont just call it right away
-            pixel.style.backgroundColor = `rgba(${color},${opacity})`;
-            console.log(pixel.style.backgroundColor);
-            // make function to change color above
-        });
+pixels.forEach((pixel) => {
+    pixel.addEventListener("mouseover", () => {
+        let color = () => {
+            console.log("ran pixel");
+            console.log(colorArg);
+            switch(colorArg) {
+                case("chooseColor"):
+                    color = getColorChoice();
+                    return(color);
+                case("rainbow"):
+                    color = getRainbow();
+                    return(color);
+                case("erase"):
+                    color = getErase();
+                    return(color);
+                default:
+                    color = getDefault();
+                    console.log('ran default');
+                    return(color);
+                    // would the return bust everything out of scope and only add one event listener?
+
+                // for the last two, dont call a function
+            }
+        }
+        pixel.style.backgroundColor = color();
+        //color not having () might be the error (i just added it)
+        
     });
-}
-
-changePixelColor();
+});
 
 const gridButton = document.querySelector(".gridButton");
 //**If you use querySelectorAll later this will break**
@@ -57,14 +76,12 @@ const changeGrid = function(size) {
         pixel.style.height = `${height}px`;
         pixelGrid.appendChild(pixel);
     }
-
-    changePixelColor();    
-
 }
 
 const getColorChoice = function() {
     // color = "110, 201, 29";
-    return(`110, 201, 29`);
+    console.log('getColorChoice function called');
+    return("green");
 }
 
 const getRainbow = function() {
@@ -78,18 +95,17 @@ const getRainbow = function() {
 
     console.log(vals);
 
-    const stringVals = `${vals.toString()}`;
-    // color = stringVals;
-    console.log(stringVals);
-    return(stringVals);
+    const rainbowColor = `"rgb(${vals.toString()})"`;
+    console.log(rainbowColor);
+    return(rainbowColor);
 }
 
 const getErase = function() {
-    return("255, 255, 255"); //should this be a string?  separated too?
+    return("white"); //should this be a string?  separated too?
 }
 
 const getDefault = function() {
-    return("0, 0, 0");
+    return("black");
 }
 
 
@@ -102,7 +118,8 @@ colorButtons.forEach((colorButton) => {
         if (colorButton.classList.contains("buttonDown")) {
             colorButton.classList.remove("buttonDown");
             colorButton.classList.add("buttonUp");
-            getColorType("default");   
+            colorArg = "defaultBlack";
+            console.log('ran button if');
             // default is black         
         }
         else {
@@ -112,6 +129,9 @@ colorButtons.forEach((colorButton) => {
 
             switch(colorButton.id) {
                 case("chooseColor"):
+                    console.log('ran color button id');
+                    console.log(colorButton.id);
+
                     colorButton.classList.remove("buttonUp");
                     colorButton.classList.add("buttonDown");
                     // toggle this later maybe
@@ -119,7 +139,7 @@ colorButtons.forEach((colorButton) => {
                     rainbowButton.classList.add("buttonUp");
                     eraseButton.classList.remove("buttonDown");
                     eraseButton.classList.add("buttonUp");
-                    getColorType("chooseColor");
+                    colorArg = "chooseColor";
                     break;
                 case("rainbow"):
                     colorButton.classList.remove("buttonUp");
@@ -128,7 +148,7 @@ colorButtons.forEach((colorButton) => {
                     chooseColorButton.classList.add("buttonUp");
                     eraseButton.classList.remove("buttonDown");
                     eraseButton.classList.add("buttonUp");
-                    getColorType("rainbow");
+                    colorArg = "rainbow";
                     break;
                 case("erase"):
                     colorButton.classList.remove("buttonUp");
@@ -137,31 +157,33 @@ colorButtons.forEach((colorButton) => {
                     chooseColorButton.classList.add("buttonUp");
                     rainbowButton.classList.remove("buttonDown");
                     rainbowButton.classList.add("buttonUp");
-                    getColorType("erase");
+                    colorArg = "erase";
                     break;
             }
         }
+        console.log(typeof colorArg);
     });
 });
 
-const getColorType = function(id) {
+// const getColorType = function(id) {
+//     console.log('getColorType function called');
 
-    switch(id) {
-        case("chooseColor"):
-            colorType = getColorChoice();
-            break;
-        case("rainbow"):
-            colorType = getRainbow();
-            break;
-        case("erase"):
-            colorType = getErase();
-            break;
-        case("default"):
-            colorType = getDefault();
-            break;
-        // if this runs the function rather than assigns it, consider putting logic here?
-    }
-}
+//     switch(id) {
+//         case("chooseColor"):
+//             colorType = getColorChoice();
+//             break;
+//         case("rainbow"):
+//             colorType = getRainbow();
+//             break;
+//         case("erase"):
+//             colorType = getErase();
+//             break;
+//         case("default"):
+//             colorType = getDefault();
+//             break;
+//         // if this runs the function rather than assigns it, consider putting logic here?
+//     }
+// }
 
 
 
