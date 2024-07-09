@@ -1,6 +1,10 @@
 'use strict'
 
-let colorArg = "blue";
+let colorArg;
+
+const chooseColorButton = document.querySelector("#chooseColor");
+const rainbowButton = document.querySelector("#rainbow");
+const eraseButton = document.querySelector("#erase");
 
 // let colorType = "0, 0, 0"; //make this default already?
 // let opacity = "1"; //keep same for now.  if color works, write similar logic and change to opacityType
@@ -29,10 +33,12 @@ const changePixelColor = function() {
                     case("erase"):
                         color = getErase();
                         return(color);
-                    default:
-                        color = getDefault();
-                        console.log('ran default');
-                        return(color);
+                    // default:
+                        // color = getDefault();
+                        // console.log('ran default');
+                        // return(color);
+
+
                         // would the return bust everything out of scope and only add one event listener?
 
                     // for the last two, dont call a function
@@ -87,9 +93,8 @@ const changeGrid = function(size) {
 }
 
 const getColorChoice = function() {
-    // color = "110, 201, 29";
-    console.log('getColorChoice function called');
-    return("green");
+    return(chooseColorButton.value);
+
 }
 
 const getRainbow = function() {
@@ -110,9 +115,10 @@ const getErase = function() {
     return("white"); 
 }
 
-const getDefault = function() {
-    return("black");
-}
+// const getDefault = function() {
+//     // return("black");
+//     console.log("hi)");
+// }
 
 
 // put above at tippy top if hoisting needed
@@ -125,13 +131,11 @@ colorButtons.forEach((colorButton) => {
             colorButton.classList.remove("buttonDown");
             colorButton.classList.add("buttonUp");
             colorArg = "defaultBlack";
+            // is this being used?
             console.log('ran button if');
             // default is black         
         }
         else {
-            const chooseColorButton = document.querySelector("#chooseColor");
-            const rainbowButton = document.querySelector("#rainbow");
-            const eraseButton = document.querySelector("#erase");
 
             switch(colorButton.id) {
                 case("chooseColor"):
