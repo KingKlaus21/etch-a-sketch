@@ -10,40 +10,46 @@ const pixelGrid = document.querySelector(".pixelGrid");
 
 
     // pass arg in here for color types?  
-const pixels = document.querySelectorAll(".pixel");
+const changePixelColor = function() {
 
-pixels.forEach((pixel) => {
-    pixel.addEventListener("mouseover", () => {
-        let color = () => {
-            console.log("ran pixel");
-            console.log(colorArg);
-            switch(colorArg) {
-                case("chooseColor"):
-                    color = getColorChoice();
-                    return(color);
-                case("rainbow"):
-                    color = getRainbow();
-                    return(color);
-                case("erase"):
-                    color = getErase();
-                    return(color);
-                default:
-                    color = getDefault();
-                    console.log('ran default');
-                    return(color);
-                    // would the return bust everything out of scope and only add one event listener?
+    const pixels = document.querySelectorAll(".pixel");
 
-                // for the last two, dont call a function
+    pixels.forEach((pixel) => {
+        pixel.addEventListener("mouseover", () => {
+            let color = () => {
+                console.log("ran pixel");
+                console.log(colorArg);
+                switch(colorArg) {
+                    case("chooseColor"):
+                        color = getColorChoice();
+                        return(color);
+                    case("rainbow"):
+                        color = getRainbow();
+                        return(color);
+                    case("erase"):
+                        color = getErase();
+                        return(color);
+                    default:
+                        color = getDefault();
+                        console.log('ran default');
+                        return(color);
+                        // would the return bust everything out of scope and only add one event listener?
+
+                    // for the last two, dont call a function
+                }
             }
-        }
-        pixel.style.backgroundColor = color();
-        //color not having () might be the error (i just added it)
-        
+            pixel.style.backgroundColor = color();
+            //color not having () might be the error (i just added it)
+            
+        });
     });
-});
+}
+
+changePixelColor();
 
 const gridButton = document.querySelector(".gridButton");
 //**If you use querySelectorAll later this will break**
+// By break I think I meant it adds it to the prompt to the clear button too
 
 gridButton.addEventListener("click", () => {
     let gridSize = prompt("Please choose a grid size between 1 and 100:");
@@ -76,6 +82,8 @@ const changeGrid = function(size) {
         pixel.style.height = `${height}px`;
         pixelGrid.appendChild(pixel);
     }
+
+    changePixelColor();
 }
 
 const getColorChoice = function() {
