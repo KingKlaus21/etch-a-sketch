@@ -93,15 +93,13 @@ const getRainbow = function() {
         vals.push(val);
     });
 
-    console.log(vals);
-
-    const rainbowColor = `"rgb(${vals.toString()})"`;
-    console.log(rainbowColor);
-    return(rainbowColor);
+    const rainbowColor = vals.toString();
+    
+    return(`rgb(${rainbowColor})`);
 }
 
 const getErase = function() {
-    return("white"); //should this be a string?  separated too?
+    return("white"); 
 }
 
 const getDefault = function() {
