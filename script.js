@@ -33,10 +33,10 @@ const changePixelColor = function() {
                     case("erase"):
                         color = getErase();
                         return(color);
-                    // default:
+                    default:
                         // color = getDefault();
-                        // console.log('ran default');
-                        // return(color);
+                        console.log('ran default');
+                        return;
 
 
                         // would the return bust everything out of scope and only add one event listener?
@@ -130,7 +130,7 @@ colorButtons.forEach((colorButton) => {
         if (colorButton.classList.contains("buttonDown")) {
             colorButton.classList.remove("buttonDown");
             colorButton.classList.add("buttonUp");
-            colorArg = "defaultBlack";
+            colorArg = "defaultColor";
             // is this being used?
             console.log('ran button if');
             // default is black         
