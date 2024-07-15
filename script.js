@@ -20,38 +20,29 @@ const changePixelColor = function() {
 
     pixels.forEach((pixel) => {
         pixel.addEventListener("mouseover", () => {
-            let color = () => {
-                console.log("ran pixel");
-                console.log(colorArg);
-                switch(colorArg) {
-                    case("chooseColor"):
-                        color = getColorChoice();
-                        return(color);
-                    case("rainbow"):
-                        color = getRainbow();
-                        return(color);
-                    case("erase"):
-                        color = getErase();
-                        return(color);
-                    default:
-                        // color = getDefault();
-                        console.log('ran default');
-                        return;
-
-
-                        // would the return bust everything out of scope and only add one event listener?
-
-                    // for the last two, dont call a function
-                }
-            }
-            pixel.style.backgroundColor = color();
-            //color not having () might be the error (i just added it)
-            
+            pixel.style.backgroundColor = colorPicker(colorArg);         
         });
     });
 }
 
 changePixelColor();
+
+const colorPicker = function(colorArg) {
+    // let color = () => {
+    //     console.log("ran pixel");
+    //     console.log(colorArg);
+        switch(colorArg) {
+            case("chooseColor"):
+                return(getColorChoice());
+            case("rainbow"):
+                return(getRainbow());
+            case("erase"):
+                return(getErase());
+            default:
+                console.log('ran default');
+                return;
+    }
+}
 
 const gridButton = document.querySelector(".gridButton");
 //**If you use querySelectorAll later this will break**
@@ -127,16 +118,14 @@ const colorButtons = document.querySelectorAll(".colorButton");
 
 colorButtons.forEach((colorButton) => {
     colorButton.addEventListener("click", () => {
-        if (colorButton.classList.contains("buttonDown")) {
+        if (colorButton.classList.contains("buttonDown") && colorButton.id != "chooseColor") {
             colorButton.classList.remove("buttonDown");
             colorButton.classList.add("buttonUp");
             colorArg = "defaultColor";
-            // is this being used?
+            // DO NOT TOUCH THIS colorArg
             console.log('ran button if');
-            // default is black         
         }
         else {
-
             switch(colorButton.id) {
                 case("chooseColor"):
                     console.log('ran color button id');

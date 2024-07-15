@@ -17,3 +17,74 @@ Now let’s merge our rps-ui branch into main, our current branch, with git merg
 If everything goes fine, our rps-ui branch is now successfully merged with main! Use git log and you’ll see all the commits you’ve made to your feature branch on top of the commits you made to the main branch. Now for our final step!
 Let’s push our main branch into our remote repo by running git push origin main . Go to your GitHub repo and you’ll see that our main branch will have all the changes and commits you made to the rps-ui branch. Congratulations! You’ve successfully pushed your first feature into your production branch!
 Now that we have all our code in the main branch, we don’t really need our rps-ui branch anymore. Let’s do some cleanup, both locally and in the remote repo. Delete the branch from our local repo with git branch -d rps-ui and also delete it from the remote repo on GitHub with git push origin --delete rps-ui. Congrats, we’re all done with our cleanup!
+
+
+
+<!-- for checking if mouse is down and moving -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="pixelCanvas"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+#pixelCanvas {
+    display: grid;
+    grid-template-columns: repeat(16, 20px); /* Adjust as needed */
+    grid-template-rows: repeat(16, 20px); /* Adjust as needed */
+    gap: 1px;
+}
+
+.pixel {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const pixelCanvas = document.getElementById('pixelCanvas');
+    let isMouseDown = false;
+
+    // Create the pixel grid
+    for (let i = 0; i < 256; i++) { // 16x16 grid
+        const pixel = document.createElement('div');
+        pixel.classList.add('pixel');
+        pixelCanvas.appendChild(pixel);
+    }
+
+    // Event listeners for mouse actions
+    pixelCanvas.addEventListener('mousedown', () => {
+        isMouseDown = true;
+    });
+
+    document.addEventListener('mouseup', () => {
+        isMouseDown = false;
+    });
+
+    pixelCanvas.addEventListener('mouseover', (event) => {
+        if (isMouseDown && event.target.classList.contains('pixel')) {
+            event.target.style.backgroundColor = 'black'; // Change to desired color
+        }
+    });
+
+    // Prevent default drag behavior
+    pixelCanvas.addEventListener('dragstart', (event) => {
+        event.preventDefault();
+    });
+}); -->
