@@ -25,7 +25,8 @@ const changePixelAppearance = function() {
 
     pixels.forEach((pixel) => {
         pixel.addEventListener("mouseover", () => {
-            pixel.style.backgroundColor = colorPicker(colorArg);         
+            pixel.style.backgroundColor = colorPicker(colorArg);   
+            pixel.style.opacity = opacityPicker(opacityArg);      
         });
     });
 }
