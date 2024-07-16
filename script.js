@@ -1,6 +1,7 @@
 'use strict'
 
 let colorArg;
+let opacityArg;
 
 const chooseColorButton = document.querySelector("#chooseColor");
 const rainbowButton = document.querySelector("#rainbow");
@@ -28,9 +29,6 @@ const changePixelColor = function() {
 changePixelColor();
 
 const colorPicker = function(colorArg) {
-    // let color = () => {
-    //     console.log("ran pixel");
-    //     console.log(colorArg);
         switch(colorArg) {
             case("chooseColor"):
                 return(getColorChoice());
@@ -106,60 +104,35 @@ const getErase = function() {
     return("white"); 
 }
 
-// const getDefault = function() {
-//     // return("black");
-//     console.log("hi)");
-// }
-
-
-// put above at tippy top if hoisting needed
-
 const colorButtons = document.querySelectorAll(".colorButton");
 
 colorButtons.forEach((colorButton) => {
     colorButton.addEventListener("click", () => {
         if (colorButton.classList.contains("buttonDown") && colorButton.id != "chooseColor") {
-            colorButton.classList.remove("buttonDown");
-            colorButton.classList.add("buttonUp");
+            colorButton.classList.toggle("buttonDown");
             colorArg = "defaultColor";
-            // DO NOT TOUCH THIS colorArg
-            console.log('ran button if');
         }
         else {
             switch(colorButton.id) {
                 case("chooseColor"):
-                    console.log('ran color button id');
-                    console.log(colorButton.id);
-
-                    colorButton.classList.remove("buttonUp");
                     colorButton.classList.add("buttonDown");
-                    // toggle this later maybe
                     rainbowButton.classList.remove("buttonDown");
-                    rainbowButton.classList.add("buttonUp");
                     eraseButton.classList.remove("buttonDown");
-                    eraseButton.classList.add("buttonUp");
                     colorArg = "chooseColor";
                     break;
                 case("rainbow"):
-                    colorButton.classList.remove("buttonUp");
-                    colorButton.classList.add("buttonDown");
+                    colorButton.classList.toggle("buttonDown");
                     chooseColorButton.classList.remove("buttonDown");
-                    chooseColorButton.classList.add("buttonUp");
                     eraseButton.classList.remove("buttonDown");
-                    eraseButton.classList.add("buttonUp");
                     colorArg = "rainbow";
                     break;
                 case("erase"):
-                    colorButton.classList.remove("buttonUp");
-                    colorButton.classList.add("buttonDown");
+                    colorButton.classList.toggle("buttonDown");
                     chooseColorButton.classList.remove("buttonDown");
-                    chooseColorButton.classList.add("buttonUp");
                     rainbowButton.classList.remove("buttonDown");
-                    rainbowButton.classList.add("buttonUp");
                     colorArg = "erase";
                     break;
             }
         }
-        console.log(typeof colorArg);
     });
 });

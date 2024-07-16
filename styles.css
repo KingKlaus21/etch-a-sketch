@@ -4,6 +4,12 @@ h1 {
     margin: 10px auto;
 }
 
+button,
+input {
+    background-color: lightblue;
+
+}
+
 /* .contentContainer { */
     /* width: 650px; */
     /* display: flex;
@@ -68,10 +74,6 @@ h1 {
     border-color:rgb(44, 44, 44);
     border-width: 1px;
     background-color: white;
-}
-
-.buttonUp {
-    background-color: lightblue;
 }
 
 .buttonDown {
