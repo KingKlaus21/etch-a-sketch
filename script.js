@@ -26,7 +26,9 @@ const changePixelAppearance = function() {
     pixels.forEach((pixel) => {
         pixel.addEventListener("mouseover", () => {
             pixel.style.backgroundColor = colorPicker(colorArg);   
-            pixel.style.opacity = opacityPicker(opacityArg);      
+            pixel.style.opacity = opacityArg == "chooseColor" ? opacityPicker(opacityArg) 
+                                                              : (pixel.style.opacity + opacityPicker(opacityArg));  
+            console.log(pixel.style.opacity);    
         });
     });
 }
@@ -40,7 +42,8 @@ const colorPicker = function(colorArg) {
             case("rainbow"):
                 return(getRainbow());
             case("erase"):
-                return(getErase());
+                return("white");
+                // erase function returns white every time, so its easier to just set it here
             default:
                 console.log('ran default color');
                 return;
@@ -52,9 +55,9 @@ const opacityPicker = function(opacityArg) {
         case("chooseOpacity"):
             return(getOpacityChoice());
         case("lighten"):
-            return(getLighten());
+            return(-0.1);
         case("darken"):
-            return(getDarken());
+            return(0.1);
         default:
             console.log('ran default opacity');
             return;
@@ -119,9 +122,9 @@ const getRainbow = function() {
     return(`rgb(${rainbowColor})`);
 }
 
-const getErase = function() {
-    return("white"); 
-}
+// const getErase = function() {
+//     return("white"); 
+// }
 
 
 
@@ -130,13 +133,13 @@ const getOpacityChoice = function() {
     return(chosenOpacity);
 }
 
-const getLighten = function() {
-    // this will be the current value minus 0.1
-}
+// const getLighten = function() {
+//     // this will be the current value minus 0.1
+// }
 
-const getDarken = function() {
-    // this will be the current value plus 0.1
-}
+// const getDarken = function() {
+//     // this will be the current value plus 0.1
+// }
 
 const colorButtons = document.querySelectorAll(".colorButton");
 
@@ -155,13 +158,13 @@ colorButtons.forEach((colorButton) => {
                     colorArg = "chooseColor";
                     break;
                 case("rainbow"):
-                    colorButton.classList.toggle("buttonDown");
+                    colorButton.classList.add("buttonDown");
                     chooseColorButton.classList.remove("buttonDown");
                     eraseButton.classList.remove("buttonDown");
                     colorArg = "rainbow";
                     break;
                 case("erase"):
-                    colorButton.classList.toggle("buttonDown");
+                    colorButton.classList.add("buttonDown");
                     chooseColorButton.classList.remove("buttonDown");
                     rainbowButton.classList.remove("buttonDown");
                     colorArg = "erase";
@@ -171,11 +174,11 @@ colorButtons.forEach((colorButton) => {
     });
 });
 
-const opacityButtons = doucment.querySelectorAll(".opacityButton");
+const opacityButtons = document.querySelectorAll(".opacityButton");
 
 opacityButtons.forEach((opacityButton) => {
     opacityButton.addEventListener("click", () => {
-        if (opacityButton.classList.contains("buttonDown") && opacityButton.id != "chooseOpacity") {
+        if (opacityButton.classList.contains("buttonDown")/* && opacityButton.id != "chooseOpacity"*/) {
             opacityButton.classList.toggle("buttonDown");
             opacityArg = "defaultOpacity";
         }
@@ -185,21 +188,22 @@ opacityButtons.forEach((opacityButton) => {
                     opacityButton.classList.add("buttonDown");
                     lightenButton.classList.remove("buttonDown");
                     darkenButton.classList.remove("buttonDown");
-                    opacityArg = "chooseColor";
+                    opacityArg = "chooseOpacity";
                     break;
                 case("lighten"):
-                    opacityButton.classList.toggle("buttonDown");
+                    opacityButton.classList.add("buttonDown");
                     chooseOpacityButton.classList.remove("buttonDown");
                     darkenButton.classList.remove("buttonDown");
-                    colorArg = "lighten";
+                    opacityArg = "lighten";
                     break;
                 case("darken"):
-                    opacityButton.classList.toggle("buttonDown");
+                    opacityButton.classList.add("buttonDown");
                     chooseOpacityButton.classList.remove("buttonDown");
                     lightenButton.classList.remove("buttonDown");
-                    colorArg = "darken";
+                    opacityArg = "darken";
                     break;
             }
         }
     });
 });
+// DOES NOT DARKEN
