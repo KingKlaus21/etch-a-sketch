@@ -74,6 +74,8 @@ input {
     border-color:rgb(44, 44, 44);
     border-width: 1px;
     background-color: white;
+
+    /* opacity: 1; */
 }
 
 .buttonDown {

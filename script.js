@@ -24,7 +24,11 @@ const changePixelAppearance = function() {
     const pixels = document.querySelectorAll(".pixel");
 
     pixels.forEach((pixel) => {
+        
+        pixel.style.opacity = 1;
+
         pixel.addEventListener("mouseover", () => {
+
             pixel.style.backgroundColor = colorPicker(colorArg);
 
             let currentOpacity = pixel.style.opacity;
@@ -65,6 +69,7 @@ const opacityPicker = function(opacityArg, currentOpacity) {
     }
     else if (opacityArg == "darken" && currentOpacity < 1) {
         console.log("ran darken");
+        console.log(Number(currentOpacity));
         return(Number(currentOpacity) + 0.1);
     }
     else {
