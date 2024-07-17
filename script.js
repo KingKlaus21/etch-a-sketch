@@ -25,10 +25,12 @@ const changePixelAppearance = function() {
 
     pixels.forEach((pixel) => {
         pixel.addEventListener("mouseover", () => {
-            pixel.style.backgroundColor = colorPicker(colorArg);   
+            pixel.style.backgroundColor = colorPicker(colorArg);
+
+            let currentOpacity = pixel.style.opacity;
             pixel.style.opacity = opacityArg == "chooseColor" ? opacityPicker(opacityArg) 
-                                                              : (pixel.style.opacity + opacityPicker(opacityArg));  
-            console.log(pixel.style.opacity);    
+                                                              : Number(currentOpacity) + Number(opacityPicker(opacityArg));  
+            console.log(Number(currentOpacity) + Number(opacityPicker(opacityArg)));
         });
     });
 }
@@ -36,17 +38,17 @@ const changePixelAppearance = function() {
 changePixelAppearance();
 
 const colorPicker = function(colorArg) {
-        switch(colorArg) {
-            case("chooseColor"):
-                return(getColorChoice());
-            case("rainbow"):
-                return(getRainbow());
-            case("erase"):
-                return("white");
-                // erase function returns white every time, so its easier to just set it here
-            default:
-                console.log('ran default color');
-                return;
+    switch(colorArg) {
+        case("chooseColor"):
+            return(getColorChoice());
+        case("rainbow"):
+            return(getRainbow());
+        case("erase"):
+            return("white");
+            // erase function returns white every time, so its easier to just set it here
+        default:
+            console.log('ran default color');
+            return;
     }
 }
 
@@ -97,6 +99,7 @@ const changeGrid = function(size) {
         pixel.classList.add("pixel");
         pixel.style.width = `${width}px`;
         pixel.style.height = `${height}px`;
+        pixel.style.opacity = 1;
         pixelGrid.appendChild(pixel);
     }
 
