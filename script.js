@@ -28,9 +28,13 @@ const changePixelAppearance = function() {
             pixel.style.backgroundColor = colorPicker(colorArg);
 
             let currentOpacity = pixel.style.opacity;
-            pixel.style.opacity = opacityArg == "chooseColor" ? opacityPicker(opacityArg) 
-                                                              : Number(currentOpacity) + Number(opacityPicker(opacityArg));  
-            console.log(Number(currentOpacity) + Number(opacityPicker(opacityArg)));
+            pixel.style.opacity = opacityPicker(opacityArg, currentOpacity);
+            console.log(pixel.style.opacity);
+
+
+            // pixel.style.opacity = (opacityArg == "chooseColor") ? opacityPicker(opacityArg) 
+            //                                                   : Number(currentOpacity) + Number(opacityPicker(opacityArg));  
+            // console.log(Number(currentOpacity) + Number(opacityPicker(opacityArg)));
         });
     });
 }
@@ -52,17 +56,19 @@ const colorPicker = function(colorArg) {
     }
 }
 
-const opacityPicker = function(opacityArg) {
-    switch(opacityArg) {
-        case("chooseOpacity"):
-            return(getOpacityChoice());
-        case("lighten"):
-            return(-0.1);
-        case("darken"):
-            return(0.1);
-        default:
-            console.log('ran default opacity');
-            return;
+const opacityPicker = function(opacityArg, currentOpacity) {
+    if (opacityArg == "chooseOpacity") {
+        return(getOpacityChoice());
+    }
+    else if (opacityArg == "lighten" && currentOpacity > 0) {
+        return(currentOpacity - 0.1);
+    }
+    else if (opacityArg == "darken" && currentOpacity < 1) {
+        console.log("ran darken");
+        return(Number(currentOpacity) + 0.1);
+    }
+    else {
+        return;
     }
 }
 
