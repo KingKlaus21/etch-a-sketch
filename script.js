@@ -77,11 +77,11 @@ const opacityPicker = function(opacityArg, currentOpacity) {
     }
 }
 
-const gridButton = document.querySelector(".gridButton");
+const newGridButton = document.querySelector(".newGridButton");
 //**If you use querySelectorAll later this will break**
 // By break I think I meant it adds it to the prompt to the clear button too
 
-gridButton.addEventListener("click", () => {
+newGridButton.addEventListener("click", () => {
     let gridSize = prompt("Please choose a grid size between 1 and 100:");
     gridSize = Math.round(gridSize);
 
@@ -91,7 +91,7 @@ gridButton.addEventListener("click", () => {
         // clears grid
         changeGrid(gridSize);
     }
-    else {
+    else if (gridSize < 1 || gridSize > 100) {
         alert("Please try again");
     }
 });
@@ -117,6 +117,22 @@ const changeGrid = function(size) {
     changePixelAppearance();
 }
 
+const clearGridButton = document.querySelector(".clearGridButton");
+
+clearGridButton.addEventListener("click", () => {
+
+    const pixels = document.querySelectorAll(".pixel");
+
+    pixels.forEach((pixel) => {
+        pixel.style.backgroundColor = "white";
+        pixel.style.opacity = "1";
+    });
+    
+});
+
+
+
+
 const getColorChoice = function() {
     return(chooseColorButton.value);
 
@@ -132,6 +148,7 @@ const getRainbow = function() {
     });
 
     const rainbowColor = vals.toString();
+    console.log(rainbowColor);
     
     return(`rgb(${rainbowColor})`);
 }
@@ -220,4 +237,3 @@ opacityButtons.forEach((opacityButton) => {
         }
     });
 });
-// DOES NOT DARKEN

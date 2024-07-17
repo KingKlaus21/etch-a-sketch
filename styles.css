@@ -1,13 +1,30 @@
+body {
+    background-color:antiquewhite;
+}
+
+
 h1 {
     text-align: center;
     font-size: 60px;
     margin: 10px auto;
 }
 
+h3 {
+    font-size: 30px;
+    margin: 0px;
+    padding: 0px;
+}
+
 button,
 input {
     background-color: lightblue;
-    
+    font-size: 20px;
+    box-shadow: 2px 2px 2px rgb(81, 81, 81);
+    padding: 6px;
+
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: black;
 
 }
 
@@ -28,16 +45,16 @@ input {
     /* width: 706px; */
     /* 706 since pixelGrid has a
        border of 3px (3+3=6) */
-    border-style:solid;
+    /* border-style:solid;
     border-color: green;
-    border-width: 3px;
+    border-width: 3px; */
 
     /* margin: 0px;
     margin: auto; */
     margin: 0px 100px;
 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
 /* .buttonContainer {
@@ -53,6 +70,20 @@ input {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+
+    /* border-radius: 8px; */
+    border-width: 3px;
+    border-color: rgb(65, 56, 56);
+    border-style: outset;
+
+    padding: 3px 6px;
+
+    box-shadow: 4px 4px 6px rgb(81, 81, 81);
+    background-color: bisque;
+
+
+
+
 }
 
 .pixelGrid {
@@ -73,6 +104,15 @@ input {
     display: flex;
     flex-wrap: wrap;
     gap: 0px 0px;
+
+    margin-left: 50px;
+    margin-right: 50px;
+
+    flex: 0 0 auto;
+    min-width: 0px;
+
+    box-shadow: 6px 6px 8px rgb(81, 81, 81);
+
 }
 
 .pixel {
@@ -95,4 +135,16 @@ input {
 .buttonDown {
     background-color: darkblue;
     
+}
+
+
+/* playing with button settings */
+
+#chooseColor {
+    height: 60px;
+    width: 60px;
+    padding: 5px;
+
+    /* border-inline: 2px solid black; */
+    /* border-radius: 10px; */
 }
