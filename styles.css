@@ -7,6 +7,7 @@ h1 {
 button,
 input {
     background-color: lightblue;
+    
 
 }
 
@@ -22,23 +23,36 @@ input {
     
 /* } */
 
+
 .contentContainer {
-    width: 706px;
+    /* width: 706px; */
     /* 706 since pixelGrid has a
        border of 3px (3+3=6) */
     border-style:solid;
     border-color: green;
     border-width: 3px;
-    margin: 0px;
-    margin: auto;
+
+    /* margin: 0px;
+    margin: auto; */
+    margin: 0px 100px;
+
+    display: flex;
+    justify-content: space-evenly;
 }
 
-.buttonContainer {
+/* .buttonContainer {
     display: flex;
     flex: 1;
     justify-content:space-evenly;
     align-items: center;
     margin: 10px 0px;
+} */
+
+.buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .pixelGrid {

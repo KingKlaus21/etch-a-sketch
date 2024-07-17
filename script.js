@@ -142,9 +142,9 @@ const getRainbow = function() {
 
 
 
-const getOpacityChoice = function() {
-    let chosenOpacity = prompt("Choose value betwen 0 and 1");
-    return(chosenOpacity);
+const getOpacityChoice = function() {   
+    console.log("The slider opacity is " + chooseOpacityButton.value); 
+    return(chooseOpacityButton.value);
 }
 
 // const getLighten = function() {
@@ -192,7 +192,7 @@ const opacityButtons = document.querySelectorAll(".opacityButton");
 
 opacityButtons.forEach((opacityButton) => {
     opacityButton.addEventListener("click", () => {
-        if (opacityButton.classList.contains("buttonDown")/* && opacityButton.id != "chooseOpacity"*/) {
+        if (opacityButton.classList.contains("buttonDown") && opacityButton.id != "chooseOpacity") {
             opacityButton.classList.toggle("buttonDown");
             opacityArg = "defaultOpacity";
         }
