@@ -19,6 +19,9 @@ button,
 input {
     background-color: lightblue;
     font-size: 20px;
+    /* font-family:'Times New Roman', Times, serif; */
+    color: black;
+    text-align: center;
     box-shadow: 2px 2px 2px rgb(81, 81, 81);
     padding: 6px;
 
@@ -26,6 +29,7 @@ input {
     border-width: 2px;
     border-color: black;
 
+    cursor: pointer;
 }
 
 /* .contentContainer { */
@@ -93,6 +97,8 @@ input {
     width: 700px;
     height: 700px;
 
+    background-color: white;
+
     /* Didnt use border-box since
        I wanted a distinct size.
        Make sure to adjust content
@@ -145,6 +151,14 @@ input {
     
 }
 
+.inputInfo {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    bottom: 12px;
+    font-size: 14px;
+}
+
 
 /* playing with button settings */
 
@@ -157,38 +171,21 @@ input {
     /* border-radius: 10px; */
 }
 
-/* slider */
-
-/* #chooseOpacity {
-    width: 60%;
-    height: 15px;
-    border-radius: 5px;
-    background-color: lightblue;
-    outline: none;
-    opacity: 0.7;
-    transition: opacity .2s;
+input[type=number]::placeholder {
+    /* opacity: 1; */
+    color: black;
 }
 
-#chooseOpacity:hover {
-    opacity: 1;
+input[type=number]:focus::placeholder {
+    /* opacity: 1; */
+    color: darkgray;
+    opacity: 0.8;
 }
 
-.sliderContainer,
-.sliderContainer p {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
-    margin: 0px;
 
-    background-color: lightblue;
-    font-size: 20px;
-
-    box-shadow: 2px 2px 2px rgb(81, 81, 81);
-    padding: 6px;
-
-    border-radius: 5px;
-    border-width: 2px;
-    border-color: black;
-
-} */
+#chooseOpacity {
+    /* padding-left: 20px; */
+    /* opacity: 1; */
+    padding: 6px 0px 6px 10px;
+}

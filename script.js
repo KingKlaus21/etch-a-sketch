@@ -87,7 +87,7 @@ const newGridButton = document.querySelector(".newGridButton");
 //**If you use querySelectorAll later this will break**
 // By break I think I meant it adds it to the prompt to the clear button too
 
-newGridButton.addEventListener("click", () => {
+newGridButton.addEventListener("dblclick", () => {
     newGridButton.classList.toggle("buttonDown");
     setTimeout(() => {
         let gridSize = prompt("Please choose a grid size between 1 and 100:");
@@ -129,7 +129,7 @@ const changeGrid = function(size) {
 
 const clearGridButton = document.querySelector(".clearGridButton");
 
-clearGridButton.addEventListener("click", () => {
+clearGridButton.addEventListener("dblclick", () => {
 
     const pixels = document.querySelectorAll(".pixel");
     clearGridButton.classList.toggle("buttonDown");
@@ -227,15 +227,19 @@ colorButtons.forEach((colorButton) => {
 const opacityButtons = document.querySelectorAll(".opacityButton");
 
 opacityButtons.forEach((opacityButton) => {
-    opacityButton.addEventListener("click", () => {
-        if (opacityButton.classList.contains("buttonDown") && opacityButton.id != "chooseOpacity") {
+    opacityButton.addEventListener("dblclick", () => {
+        if (opacityButton.classList.contains("buttonDown")) {
             opacityButton.classList.toggle("buttonDown");
+            chooseOpacityButton.value = '';
+            chooseOpacityButton.readOnly = true;
             opacityArg = "defaultOpacity";
         }
         else {
             switch(opacityButton.id) {
                 case("chooseOpacity"):
                     opacityButton.classList.add("buttonDown");
+                    chooseOpacityButton.readOnly = false;
+                    // chooseOpacityButton.placeholder = "0 to 1";
                     lightenButton.classList.remove("buttonDown");
                     darkenButton.classList.remove("buttonDown");
                     opacityArg = "chooseOpacity";
@@ -243,12 +247,16 @@ opacityButtons.forEach((opacityButton) => {
                 case("lighten"):
                     opacityButton.classList.add("buttonDown");
                     chooseOpacityButton.classList.remove("buttonDown");
+                    chooseOpacityButton.value = '';
+                    chooseOpacityButton.readOnly = true;
                     darkenButton.classList.remove("buttonDown");
                     opacityArg = "lighten";
                     break;
                 case("darken"):
                     opacityButton.classList.add("buttonDown");
                     chooseOpacityButton.classList.remove("buttonDown");
+                    chooseOpacityButton.value = '';
+                    chooseOpacityButton.readOnly = true;
                     lightenButton.classList.remove("buttonDown");
                     opacityArg = "darken";
                     break;
