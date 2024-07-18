@@ -64,16 +64,22 @@ const opacityPicker = function(opacityArg, currentOpacity) {
     if (opacityArg == "chooseOpacity") {
         return(getOpacityChoice());
     }
-    else if (opacityArg == "lighten" && currentOpacity > 0) {
-        return(currentOpacity - 0.1);
+    else if (opacityArg == "lighten" && currentOpacity >= 0.1) {
+        if (currentOpacity == 0.1) {
+            return(0.05);
+        }
+        else {
+            return(currentOpacity - 0.1);
+        }
     }
     else if (opacityArg == "darken" && currentOpacity < 1) {
-        console.log("ran darken");
-        console.log(Number(currentOpacity));
+        if (currentOpacity == 0.05) {
+            currentOpacity -= 0.05; // accounts for fully transparent
+        }
         return(Number(currentOpacity) + 0.1);
     }
     else {
-        return;
+        return(currentOpacity);
     }
 }
 
@@ -82,18 +88,22 @@ const newGridButton = document.querySelector(".newGridButton");
 // By break I think I meant it adds it to the prompt to the clear button too
 
 newGridButton.addEventListener("click", () => {
-    let gridSize = prompt("Please choose a grid size between 1 and 100:");
-    gridSize = Math.round(gridSize);
+    newGridButton.classList.toggle("buttonDown");
+    setTimeout(() => {
+        let gridSize = prompt("Please choose a grid size between 1 and 100:");
+        gridSize = Math.round(gridSize);
 
-    if (gridSize >= 1 && gridSize <= 100) {
-        // console.log(gridSize);
-        pixelGrid.innerHTML = '';
-        // clears grid
-        changeGrid(gridSize);
-    }
-    else if (gridSize < 1 || gridSize > 100) {
-        alert("Please try again");
-    }
+        if (gridSize >= 1 && gridSize <= 100) {
+            // console.log(gridSize);
+            pixelGrid.innerHTML = '';
+            // clears grid
+            changeGrid(gridSize);
+        }
+        else if (gridSize < 1 || gridSize > 100) {
+            alert("Please try again");
+        }
+        newGridButton.classList.toggle("buttonDown");
+    }, 50);
 });
 
 const changeGrid = function(size) {
@@ -122,11 +132,20 @@ const clearGridButton = document.querySelector(".clearGridButton");
 clearGridButton.addEventListener("click", () => {
 
     const pixels = document.querySelectorAll(".pixel");
+    clearGridButton.classList.toggle("buttonDown");
 
-    pixels.forEach((pixel) => {
-        pixel.style.backgroundColor = "white";
-        pixel.style.opacity = "1";
-    });
+    setTimeout(() => {
+        pixels.forEach((pixel) => {
+            pixel.style.backgroundColor = "white";
+            pixel.style.opacity = "1";
+        });
+        clearGridButton.classList.toggle("buttonDown");
+    }, 50);
+
+    // pixels.forEach((pixel) => {
+    //     pixel.style.backgroundColor = "white";
+    //     pixel.style.opacity = "1";
+    // });
     
 });
 
@@ -159,18 +178,18 @@ const getRainbow = function() {
 
 
 
-const getOpacityChoice = function() {   
-    console.log("The slider opacity is " + chooseOpacityButton.value); 
-    return(chooseOpacityButton.value);
+const getOpacityChoice = function() {
+
+    if (chooseOpacityButton.value == 0) {
+        return(Number(chooseOpacityButton.value) + 0.05);
+    }
+    else if ((Number(chooseOpacityButton.value) * 10) % 1 != 0) {
+        return(chooseOpacityButton.value - 0.05);
+    }
+    else {
+        return(Number(chooseOpacityButton.value));
+    }
 }
-
-// const getLighten = function() {
-//     // this will be the current value minus 0.1
-// }
-
-// const getDarken = function() {
-//     // this will be the current value plus 0.1
-// }
 
 const colorButtons = document.querySelectorAll(".colorButton");
 
