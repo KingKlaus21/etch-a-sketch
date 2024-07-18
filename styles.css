@@ -151,11 +151,22 @@ input {
     
 }
 
-.inputInfo {
+
+.gridSizeInfo {
     margin: 0px;
     padding: 0px;
     position: relative;
-    bottom: 12px;
+    top: 16px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+
+.opacityInfo {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    bottom: 10px;
     font-size: 14px;
 }
 
@@ -183,9 +194,18 @@ input[type=number]:focus::placeholder {
 }
 
 
-
 #chooseOpacity {
     /* padding-left: 20px; */
     /* opacity: 1; */
     padding: 6px 0px 6px 10px;
 }
+
+
+/* slider */
+
+
+#newGridButton {
+    /* box-shadow: 0px 0px 0px; */
+    background: lightblue;
+}
+

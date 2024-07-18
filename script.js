@@ -84,38 +84,39 @@ const opacityPicker = function(opacityArg, currentOpacity) {
 }
 
 const newGridButton = document.querySelector(".newGridButton");
-//**If you use querySelectorAll later this will break**
-// By break I think I meant it adds it to the prompt to the clear button too
 
-newGridButton.addEventListener("dblclick", () => {
-    newGridButton.classList.toggle("buttonDown");
-    setTimeout(() => {
-        let gridSize = prompt("Please choose a grid size between 1 and 100:");
-        gridSize = Math.round(gridSize);
+const gridSizeInfo = document.querySelector(".gridSizeInfo");
 
-        if (gridSize >= 1 && gridSize <= 100) {
-            // console.log(gridSize);
-            pixelGrid.innerHTML = '';
-            // clears grid
-            changeGrid(gridSize);
-        }
-        else if (gridSize < 1 || gridSize > 100) {
-            alert("Please try again");
-        }
-        newGridButton.classList.toggle("buttonDown");
-    }, 50);
+newGridButton.addEventListener("click", () => {
+    // newGridButton.classList.toggle("buttonDown");
+    let gridSize = newGridButton.value;
+    console.log(newGridButton.value);
+    gridSize = Math.round(gridSize);
+
+    if (gridSize >= 1 && gridSize <= 100) {
+        // console.log(gridSize);
+        pixelGrid.innerHTML = '';
+        // clears grid
+        changeGrid(gridSize);
+    }
+    // else if (gridSize < 1 || gridSize > 100) {
+    //     alert("Please try again");
+    // }
+    // newGridButton.classList.toggle("buttonDown");
 });
 
 const changeGrid = function(size) {
     console.log(size);
     let width = 700 / size;
     let height = width;
+
+    gridSizeInfo.textContent = `${size} x ${size}`;
     
     console.log(width);
     console.log(height);
 
     for (let i=0; i < size ** 2; i++){
-        console.log(size);
+        // console.log(size);
         const pixel = document.createElement("div");
         pixel.classList.add("pixel");
         pixel.style.width = `${width}px`;
@@ -124,6 +125,7 @@ const changeGrid = function(size) {
         pixelGrid.appendChild(pixel);
     }
 
+    console.log("done");
     changePixelAppearance();
 }
 
