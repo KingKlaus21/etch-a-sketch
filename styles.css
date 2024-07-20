@@ -156,7 +156,7 @@ input {
     margin: 0px;
     padding: 0px;
     position: relative;
-    top: 16px;
+    top: 18px;
     font-size: 24px;
     font-weight: bold;
 }
@@ -189,8 +189,8 @@ input[type=number]::placeholder {
 
 input[type=number]:focus::placeholder {
     /* opacity: 1; */
-    color: darkgray;
-    opacity: 0.8;
+    /* color: darkgray; */
+    opacity: 0.5;
 }
 
 

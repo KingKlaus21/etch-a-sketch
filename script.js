@@ -35,7 +35,6 @@ const changePixelAppearance = function() {
             pixel.style.opacity = opacityPicker(opacityArg, currentOpacity);
             console.log(pixel.style.opacity);
 
-
             // pixel.style.opacity = (opacityArg == "chooseColor") ? opacityPicker(opacityArg) 
             //                                                   : Number(currentOpacity) + Number(opacityPicker(opacityArg));  
             // console.log(Number(currentOpacity) + Number(opacityPicker(opacityArg)));
@@ -131,7 +130,7 @@ const changeGrid = function(size) {
 
 const clearGridButton = document.querySelector(".clearGridButton");
 
-clearGridButton.addEventListener("dblclick", () => {
+clearGridButton.addEventListener("click", () => {
 
     const pixels = document.querySelectorAll(".pixel");
     clearGridButton.classList.toggle("buttonDown");
@@ -150,6 +149,22 @@ clearGridButton.addEventListener("dblclick", () => {
     // });
     
 });
+
+// const toggleBorderButton = document.querySelector(".toggleBorderButton");
+
+// toggleBorderButton.addEventListener("dblclick", () => {
+
+//     const pixels = document.querySelectorAll(".pixel");
+//     toggleBorderButton.classList.toggle("buttonDown");
+
+//     if (toggleBorderButton.classList.contains("buttonDown")) {
+        
+//     }
+//     else {
+//         // pixels.style.borderColor = "black";
+//         console.log("else ran");
+//     }
+// });
 
 
 
@@ -229,7 +244,7 @@ colorButtons.forEach((colorButton) => {
 const opacityButtons = document.querySelectorAll(".opacityButton");
 
 opacityButtons.forEach((opacityButton) => {
-    opacityButton.addEventListener("dblclick", () => {
+    opacityButton.addEventListener("click", () => {
         if (opacityButton.classList.contains("buttonDown")) {
             opacityButton.classList.toggle("buttonDown");
             chooseOpacityButton.value = '';
