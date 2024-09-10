@@ -3,6 +3,8 @@
 let colorArg;
 let opacityArg;
 
+let mouseDrag = false;
+
 const chooseColorButton = document.querySelector("#chooseColor");
 const rainbowButton = document.querySelector("#rainbow");
 const eraseButton = document.querySelector("#erase");
@@ -17,6 +19,28 @@ const darkenButton = document.querySelector("#darken");
 
 const pixelGrid = document.querySelector(".pixelGrid");
 
+pixelGrid.addEventListener('mousedown', () => {
+    mouseDrag = true;
+    console.log('mousedown on grid');
+});
+
+pixelGrid.addEventListener('mouseup', () => {
+    mouseDrag = false;
+    console.log('mouseup on grid');
+});
+
+pixelGrid.addEventListener('mouseleave', () => {
+    mouseDrag = false;
+    console.log('mouse left grid');
+});
+
+pixelGrid.addEventListener('mouseenter', () => {
+    mouseDrag = false;
+    console.log('mouse entered grid');
+
+});
+
+
 
     // pass arg in here for color types?  
 const changePixelAppearance = function() {
@@ -29,12 +53,15 @@ const changePixelAppearance = function() {
 
         pixel.addEventListener("mouseover", () => {
 
-            pixel.style.backgroundColor = colorPicker(colorArg);
+            if (mouseDrag) {
 
-            let currentOpacity = pixel.style.opacity;
-            pixel.style.opacity = opacityPicker(opacityArg, currentOpacity);
-            console.log(pixel.style.opacity);
+                pixel.style.backgroundColor = colorPicker(colorArg);
 
+                let currentOpacity = pixel.style.opacity;
+                pixel.style.opacity = opacityPicker(opacityArg, currentOpacity);
+                console.log(pixel.style.opacity);
+            }
+            
             // pixel.style.opacity = (opacityArg == "chooseColor") ? opacityPicker(opacityArg) 
             //                                                   : Number(currentOpacity) + Number(opacityPicker(opacityArg));  
             // console.log(Number(currentOpacity) + Number(opacityPicker(opacityArg)));
@@ -281,3 +308,81 @@ opacityButtons.forEach((opacityButton) => {
         }
     });
 });
+
+
+
+
+
+
+
+
+
+
+// <!-- for checking if mouse is down and moving -->
+
+
+// <!-- <!DOCTYPE html>
+// <html lang="en">
+// <head>
+//     <meta charset="UTF-8">
+//     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//     <title>Pixel Art</title>
+//     <link rel="stylesheet" href="styles.css">
+// </head>
+// <body>
+//     <div id="pixelCanvas"></div>
+//     <script src="script.js"></script>
+// </body>
+// </html>
+
+
+
+
+// #pixelCanvas {
+//     display: grid;
+//     grid-template-columns: repeat(16, 20px); /* Adjust as needed */
+//     grid-template-rows: repeat(16, 20px); /* Adjust as needed */
+//     gap: 1px;
+// }
+
+// .pixel {
+//     width: 20px;
+//     height: 20px;
+//     background-color: white;
+//     border: 1px solid #ccc;
+// }
+
+
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     const pixelCanvas = document.getElementById('pixelCanvas');
+//     let isMouseDown = false;
+
+//     // Create the pixel grid
+//     for (let i = 0; i < 256; i++) { // 16x16 grid
+//         const pixel = document.createElement('div');
+//         pixel.classList.add('pixel');
+//         pixelCanvas.appendChild(pixel);
+//     }
+
+//     // Event listeners for mouse actions
+//     pixelCanvas.addEventListener('mousedown', () => {
+//         isMouseDown = true;
+//     });
+
+//     document.addEventListener('mouseup', () => {
+//         isMouseDown = false;
+//     });
+
+//     pixelCanvas.addEventListener('mouseover', (event) => {
+//         if (isMouseDown && event.target.classList.contains('pixel')) {
+//             event.target.style.backgroundColor = 'black'; // Change to desired color
+//         }
+//     });
+
+//     // Prevent default drag behavior
+//     pixelCanvas.addEventListener('dragstart', (event) => {
+//         event.preventDefault();
+//     });
+// }); -->

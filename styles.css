@@ -119,6 +119,12 @@ input {
 
     box-shadow: 6px 6px 8px rgb(81, 81, 81);
 
+    -webkit-user-drag: none; /* For Safari/Chrome */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For IE/Edge */
+    user-select: none; /* For modern browsers */
+
+
 }
 
 .pixel {
@@ -134,6 +140,12 @@ input {
     border-color:rgb(44, 44, 44);
     border-width: 1px;
     background-color: white;
+
+
+    -webkit-user-drag: none; /* For Safari/Chrome */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For IE/Edge */
+    user-select: none; /* For modern browsers */
 
     /* opacity: 1; */
 }
