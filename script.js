@@ -272,9 +272,9 @@ const opacityButtons = document.querySelectorAll(".opacityButton");
 
 opacityButtons.forEach((opacityButton) => {
     opacityButton.addEventListener("click", () => {
-        if (opacityButton.classList.contains("buttonDown")) {
+        if (opacityButton.classList.contains("buttonDown") && opacityButton.id != "chooseOpacity") {
             opacityButton.classList.toggle("buttonDown");
-            chooseOpacityButton.value = '';
+            // chooseOpacityButton.value = '';
             chooseOpacityButton.readOnly = true;
             opacityArg = "defaultOpacity";
         }
@@ -291,7 +291,7 @@ opacityButtons.forEach((opacityButton) => {
                 case("lighten"):
                     opacityButton.classList.add("buttonDown");
                     chooseOpacityButton.classList.remove("buttonDown");
-                    chooseOpacityButton.value = '';
+                    // chooseOpacityButton.value = '';
                     chooseOpacityButton.readOnly = true;
                     darkenButton.classList.remove("buttonDown");
                     opacityArg = "lighten";
@@ -299,7 +299,7 @@ opacityButtons.forEach((opacityButton) => {
                 case("darken"):
                     opacityButton.classList.add("buttonDown");
                     chooseOpacityButton.classList.remove("buttonDown");
-                    chooseOpacityButton.value = '';
+                    // chooseOpacityButton.value = '';
                     chooseOpacityButton.readOnly = true;
                     lightenButton.classList.remove("buttonDown");
                     opacityArg = "darken";
